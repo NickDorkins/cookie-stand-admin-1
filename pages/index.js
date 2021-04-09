@@ -1,82 +1,96 @@
 import Head from 'next/head'
+import { useState } from "react"
+// import styles from '../styles/Home.module.css'
 
 export default function Home() {
+
+const [question, setQuestion] = useState("Report Table Coming Soon...")
+
+// const [reply, setReply] = useState("Ask Me Anything!")
+
+function questionAskedHandler(event){
+  event.preventDefault();
+  // alert(event.target.question.value)
+
+  // .5 means 50/50 chance
+  // const randomReply = Math.random() > .5 ? "YES" : "NO"
+
+  setReply(randomReply)
+  setQuestion(event.target.question.value)
+
+}
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="">
       <Head>
-        <title>Create Next App</title>
+        <title>Cookie Stand </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+      <Header title="Cookie Stand Admin"/>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
+      {/* <header className="flex p-4 bg-gray-500 justify-items-center text-gray-50 ">
+        <h1 className="text-xl boarder boarder-color-black">Cookie Stand</h1>
+      </header> */}
 
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
+      <main className="">
+        {/* <form onSubmit={questionAskedHandler} className="flex w-1/2 p-2 mx-auto my-4 bg-green-500">
+          <input name="question" className="flex-auto pl-1"></input>
+          <button className="px-2 py-1 bg-gray-500 text-gray-50">Ask</button>
+        </form> */}
+        
+        
+        <form onSubmit={questionAskedHandler} className="flex w-1/2 p-2 mx-auto my-4 text-center bg-green-300">
+          <fieldset>
+            <div className="justify-items-center">
+              <legend className="">Create Cookie Stand</legend>
+            </div>
+              
+            <div className="inline-block ">
+              <label>
+                <input name="question" className="flex-auto pl-1"></input>
+              </label>
+            </div>
 
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
+            <div className="inline-block ">
+              <label>
+                <input name="question" className="flex-auto pl-1"></input>
+              </label>
+            </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
+            <div className="inline-block ">
+                <label>
+                  <input name="question" className="flex-auto pl-1"></input>
+                </label>
+              </div>
+              
+            <button className="px-2 py-1 bg-green-350 justify-right text-gray-50 ">Ask</button>
+          </fieldset>
+        </form>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+
+        {/* <div className="mx-auto bg-gray-900 rounded-full w-96 h-96">
+          <div className="relative flex justify-center w-48 h-48 rounded-full item-center bg-gray-50 top-16 left-16 ">
+            <p>{reply}</p>
+          </div>
+        </div> */}
+
+        <h3 className="p-1 text-center boarder">{question}</h3>
+        
       </main>
 
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
+      <footer className="p-4 mt-8 bg-gray-500 ">
+        <p className="text-gray-50">Code Fellows</p>
+        
       </footer>
     </div>
   )
+
+  function Header(props){
+    return(
+      <header className="flex p-4 bg-green-400 justify-items-center text-black-500 ">
+        <h1 className="text-2xl boarder boarder-color-black">{props.title}</h1>
+      </header>
+    )
+  }
 }
